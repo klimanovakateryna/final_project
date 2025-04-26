@@ -10,9 +10,9 @@ function PostCard({ post }) {
 
   return (
     <div className="post-card" onClick={handleClick}>
-      <h2 className="post-card-title">{post.title}</h2>
-      <p className="post-card-time">Created: {new Date(post.created_at).toLocaleString()}</p>
-      <p className="post-card-upvotes">Upvotes: {post.upvotes}</p>
+      <p className="post-time">Posted {new Date(post.created_at).toLocaleDateString()}</p>
+      <h2 className="post-title">{post.title}</h2>
+      <p className="post-upvotes">{post.upvotes} upvotes</p>
     </div>
   )
 }
