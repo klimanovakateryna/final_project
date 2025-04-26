@@ -1,17 +1,20 @@
-import PostCard from './PostCard'
+import { useNavigate } from 'react-router-dom'
+import '../styles/PostCard.css'
 
-function PostList({ posts }) {
-  if (posts.length === 0) {
-    return <p>No posts yet. Create one!</p>
+function PostCard({ post }) {
+  const navigate = useNavigate()
+
+  const handleClick = () => {
+    navigate(`/post/${post.id}`)
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-      {posts.map((post) => (
-        <PostCard key={post.id} post={post} />
-      ))}
+    <div className="post-card" onClick={handleClick}>
+      <h2 className="post-card-title">{post.title}</h2>
+      <p className="post-card-time">Created: {new Date(post.created_at).toLocaleString()}</p>
+      <p className="post-card-upvotes">Upvotes: {post.upvotes}</p>
     </div>
   )
 }
 
-export default PostList
+export default PostCard

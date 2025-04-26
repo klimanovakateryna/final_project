@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../api/supabaseClient'
 import PostList from '../components/PostList'
+import '../styles/Home.css'
 
 function Home() {
   const [posts, setPosts] = useState([])
@@ -24,10 +25,10 @@ function Home() {
   }
 
   return (
-    <div className="home-page" style={{ padding: '2rem' }}>
+    <div className="home-container">
       <h1>SkincareHub 🧴✨</h1>
 
-      <div style={{ marginBottom: '1rem' }}>
+      <div className="sort-bar">
         <label>Sort by: </label>
         <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
           <option value="created_at">Newest</option>
@@ -41,4 +42,3 @@ function Home() {
 }
 
 export default Home
-
