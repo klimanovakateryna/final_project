@@ -6,6 +6,7 @@ import '../styles/Home.css'
 function Home() {
   const [posts, setPosts] = useState([])
   const [sortBy, setSortBy] = useState('created_at')
+  const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
     fetchPosts()
@@ -24,9 +25,13 @@ function Home() {
     }
   }
 
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchText.toLowerCase())
+  )
+
   return (
     <div className="home-container">
-      <h1>SkincareHub 🧴✨</h1>
+      <h1>SkincareHub</h1>
 
       <div className="sort-bar">
         <label>Sort by: </label>
@@ -36,7 +41,16 @@ function Home() {
         </select>
       </div>
 
-      <PostList posts={posts} />
+      <div className="search-bar">
+        <input
+          type="text"
+          placeholder="Search posts by title..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </div>
+
+      <PostList posts={filteredPosts} />
     </div>
   )
 }
