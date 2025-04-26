@@ -111,7 +111,12 @@ function Post() {
         )}
 
         {post.image_url && (
-          <img src={post.image_url} alt="Post visual" className="post-image" />
+          <img 
+            src={post.image_url} 
+            alt="Post image" 
+            className="post-image" 
+            onError={(e) => e.target.style.display = 'none'}
+          />
         )}
 
         <button onClick={handleUpvote} className="upvote-button">
