@@ -64,7 +64,7 @@ function Post() {
 
     const { error } = await supabase
       .from('comments')
-      .insert({ post_id: id, content: newComment })
+      .insert([{ post_id: id, content: newComment }])  // ✅ INSERT ARRAY WITH BRACKETS []
 
     if (error) {
       console.error('Error adding comment:', error)
