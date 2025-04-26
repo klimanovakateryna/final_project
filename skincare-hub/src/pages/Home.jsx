@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../api/supabaseClient'
 import PostList from '../components/PostList'
+import Header from '../components/Header'
 import '../styles/Home.css'
 
 function Home() {
@@ -13,7 +14,7 @@ function Home() {
   }, [sortBy])
 
   const fetchPosts = async () => {
-    let { data, error } = await supabase
+    const { data, error } = await supabase
       .from('posts')
       .select('*')
       .order(sortBy, { ascending: false })
@@ -30,17 +31,20 @@ function Home() {
   )
 
   return (
-    <div className="home-container">
-      <div className="sort-bar">
-        <button onClick={() => setSortBy('created_at')} className={sortBy === 'created_at' ? 'sort-button active' : 'sort-button'}>
-          Newest
-        </button>
-        <button onClick={() => setSortBy('upvotes')} className={sortBy === 'upvotes' ? 'sort-button active' : 'sort-button'}>
-          Most Popular
-        </button>
-      </div>
+    <div className="home-page">
+      <Header onSearch={setSearchText} />
+      <div className="home-container">
+        <div className="sort-bar">
+          <button onClick={() => setSortBy('created_at')} className={sortBy === 'created_at' ? 'sort-button active' : 'sort-button'}>
+            Newest
+          </button>
+          <button onClick={() => setSortBy('upvotes')} className={sortBy === 'upvotes' ? 'sort-button active' : 'sort-button'}>
+            Most Popular
+          </button>
+        </div>
 
-      <PostList posts={filteredPosts} />
+        <PostList posts={filteredPosts} />
+      </div>
     </div>
   )
 }

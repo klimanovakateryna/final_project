@@ -1,31 +1,32 @@
 .home-page {
-    background-color: #f5f5f5;
-    min-height: 100vh;
-  }
-  
-  .home-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 1rem;
-  }
-  
-  .sort-bar {
-    margin-bottom: 1.5rem;
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .sort-button {
-    padding: 0.5rem 1rem;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .sort-button.active {
-    background-color: #50bfa4;
-    color: white;
-    border: none;
-  }
+  background: linear-gradient(180deg, #f7f7f7 0%, #e0e0e0 100%);
+  min-height: 100vh;
+}
+
+.home-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.sort-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.sort-button {
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sort-button.active {
+  background-color: #50bfa4;
+  color: white;
+  border: none;
+}
+
   
