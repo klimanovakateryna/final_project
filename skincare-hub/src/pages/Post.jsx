@@ -127,75 +127,71 @@ function Post() {
   }
 
   return (
-    <div className="post-container">
-      {isEditing ? (
-        <div className="edit-form">
-          <input
-            className="edit-input"
-            type="text"
-            value={editTitle}
-            onChange={(e) => setEditTitle(e.target.value)}
-          />
-          <textarea
-            className="edit-textarea"
-            value={editContent}
-            onChange={(e) => setEditContent(e.target.value)}
-          />
-          <input
-            className="edit-input"
-            type="text"
-            placeholder="Image URL"
-            value={editImageUrl}
-            onChange={(e) => setEditImageUrl(e.target.value)}
-          />
-          <button onClick={handleEditSave} className="edit-save">Save</button>
-        </div>
-      ) : (
-        <>
-          <h1 className="post-title">{post.title}</h1>
-          {post.image_url && (
-            <img className="post-image" src={post.image_url} alt="Post" />
-          )}
-          {post.content && <p className="post-content">{post.content}</p>}
-        </>
-      )}
-
-      <div className="post-buttons">
-        <button onClick={() => setIsEditing(!isEditing)} className="edit-toggle">
-          {isEditing ? 'Cancel' : 'Edit Post'}
-        </button>
-        <button onClick={handleDelete} className="delete-button">
-          Delete Post
-        </button>
-      </div>
-
-      <div className="upvote-section">
-        <button onClick={handleUpvote} className="upvote-button">
-          Upvote ({post.upvotes})
-        </button>
-      </div>
-
-      <hr className="divider" />
-
-      <h2>Comments</h2>
-
-      <form onSubmit={handleAddComment} className="comment-form">
-        <input
-          type="text"
-          placeholder="Write a comment..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          className="comment-input"
-        />
-        <button type="submit" className="comment-submit">Post</button>
-      </form>
-
-      <div className="comments-list">
-        {comments.map((comment) => (
-          <div key={comment.id} className="comment-card">
-            {comment.content}
+    <div className="post-page">
+      <div className="post-card">
+        {isEditing ? (
+          <div className="edit-form">
+            <input
+              className="edit-input"
+              type="text"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+            />
+            <textarea
+              className="edit-textarea"
+              value={editContent}
+              onChange={(e) => setEditContent(e.target.value)}
+            />
+            <input
+              className="edit-input"
+              type="text"
+              placeholder="Image URL"
+              value={editImageUrl}
+              onChange={(e) => setEditImageUrl(e.target.value)}
+            />
+            <button onClick={handleEditSave} className="update-button">Update Post</button>
           </div>
-        ))}
+        ) : (
+          <>
+            <div className="post-top">
+              <h2>{post.title}</h2>
+              <div className="post-actions">
+                <button onClick={() => setIsEditing(!isEditing)} className="icon-button">✏️</button>
+                <button onClick={handleDelete} className="icon-button">🗑️</button>
+              </div>
+            </div>
+
+            {post.content && <p className="post-content">{post.content}</p>}
+            {post.image_url && <img src={post.image_url} alt="Post" className="post-image" />}
+
+            <div className="upvote-section">
+              <button onClick={handleUpvote} className="upvote-button">
+                👍 {post.upvotes} upvotes
+              </button>
+            </div>
+
+            <hr className="divider" />
+
+            <form onSubmit={handleAddComment} className="comment-form">
+              <input
+                type="text"
+                placeholder="Leave a comment..."
+                value={newComment}
+                onChange={(e) => setNewComment(e.target.value)}
+                className="comment-input"
+              />
+              <button type="submit" className="comment-submit">Post</button>
+            </form>
+
+            <div className="comments-list">
+              {comments.map((comment) => (
+                <div key={comment.id} className="comment-card">
+                  {comment.content}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   )

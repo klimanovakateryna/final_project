@@ -1,52 +1,117 @@
-.post-buttons {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
+.post-page {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
-.edit-toggle, .delete-button {
-  background-color: #ffa726;
-  color: white;
+.post-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  max-width: 700px;
+  margin: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icon-button {
+  background: none;
   border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.post-content {
+  margin: 1rem 0;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+.upvote-section {
+  margin-top: 1rem;
+}
+
+.upvote-button {
+  background-color: #50bfa4;
+  color: white;
   padding: 0.5rem 1rem;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.delete-button {
-  background-color: #f44336;
+.divider {
+  margin: 2rem 0;
+  border: none;
+  height: 1px;
+  background-color: #ddd;
 }
 
-.edit-toggle:hover {
-  background-color: #fb8c00;
+.comment-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.delete-button:hover {
-  background-color: #e53935;
+.comment-input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.comment-submit {
+  background-color: #2196f3;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment-card {
+  background-color: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 5px;
 }
 
 .edit-form {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.75rem;
 }
 
-.edit-input, .edit-textarea {
+.edit-input,
+.edit-textarea {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.edit-save {
-  background-color: #4caf50;
+.update-button {
+  background-color: #50bfa4;
   color: white;
-  border: none;
   padding: 0.5rem;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.edit-save:hover {
-  background-color: #43a047;
 }

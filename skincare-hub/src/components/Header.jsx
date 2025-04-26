@@ -15,17 +15,15 @@ function Header({ onSearch }) {
     <header className="header">
       <div className="header-container">
         <h1 className="logo" onClick={() => navigate('/')}>SkincareHub</h1>
-
         <form onSubmit={handleSearch} className="search-form">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search posts..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="search-input"
           />
         </form>
-
         <nav className="nav-links">
           <Link to="/">Home</Link>
           <Link to="/create">Create Post</Link>
