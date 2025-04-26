@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { supabase } from '../api/supabaseClient'
+import '../styles/Post.css'
 
 function Post() {
   const { id } = useParams()
@@ -83,35 +84,39 @@ function Post() {
   }
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>{post.title}</h1>
-      {post.image_url && <img src={post.image_url} alt="Post" style={{ maxWidth: '100%', margin: '1rem 0' }} />}
-      {post.content && <p>{post.content}</p>}
+    <div className="post-container">
+      <h1 className="post-title">{post.title}</h1>
 
-      <div style={{ marginTop: '1rem' }}>
-        <button onClick={handleUpvote} style={{ backgroundColor: '#4caf50', color: 'white', padding: '0.5rem', border: 'none', borderRadius: '5px' }}>
+      {post.image_url && (
+        <img className="post-image" src={post.image_url} alt="Post" />
+      )}
+
+      {post.content && <p className="post-content">{post.content}</p>}
+
+      <div className="upvote-section">
+        <button onClick={handleUpvote} className="upvote-button">
           Upvote ({post.upvotes})
         </button>
       </div>
 
-      <hr style={{ margin: '2rem 0' }} />
+      <hr className="divider" />
 
       <h2>Comments</h2>
 
-      <form onSubmit={handleAddComment} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+      <form onSubmit={handleAddComment} className="comment-form">
         <input
           type="text"
           placeholder="Write a comment..."
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          style={{ flexGrow: 1, padding: '0.5rem' }}
+          className="comment-input"
         />
-        <button type="submit" style={{ padding: '0.5rem' }}>Post</button>
+        <button type="submit" className="comment-submit">Post</button>
       </form>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+      <div className="comments-list">
         {comments.map((comment) => (
-          <div key={comment.id} style={{ padding: '0.5rem', border: '1px solid #ddd', borderRadius: '5px' }}>
+          <div key={comment.id} className="comment-card">
             {comment.content}
           </div>
         ))}
