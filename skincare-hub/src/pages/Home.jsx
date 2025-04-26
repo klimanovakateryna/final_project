@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../api/supabaseClient'
 import PostList from '../components/PostList'
+import Header from '../components/Header'
 import '../styles/Home.css'
 
 function Home() {
@@ -30,27 +31,21 @@ function Home() {
   )
 
   return (
-    <div className="home-container">
-      <h1>SkincareHub</h1>
+    <div className="home-page">
+      <Header onSearch={setSearchText} />
 
-      <div className="sort-bar">
-        <label>Sort by: </label>
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option value="created_at">Newest</option>
-          <option value="upvotes">Most Upvoted</option>
-        </select>
+      <div className="home-container">
+        <div className="sort-bar">
+          <button onClick={() => setSortBy('created_at')} className={sortBy === 'created_at' ? 'sort-button active' : 'sort-button'}>
+            Newest
+          </button>
+          <button onClick={() => setSortBy('upvotes')} className={sortBy === 'upvotes' ? 'sort-button active' : 'sort-button'}>
+            Most Popular
+          </button>
+        </div>
+
+        <PostList posts={filteredPosts} />
       </div>
-
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search posts by title..."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-      </div>
-
-      <PostList posts={filteredPosts} />
     </div>
   )
 }
