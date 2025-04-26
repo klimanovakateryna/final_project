@@ -1,6 +1,6 @@
 .header {
-  background: linear-gradient(90deg, #dfe9f3 0%, #ffffff 100%);
-  padding: 1rem;
+  background: linear-gradient(90deg, #e2e8ec 0%, #f9fbfc 100%);
+  padding: 1rem 0;
 }
 
 .header-container {
@@ -9,36 +9,47 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 2rem;
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
-  cursor: pointer;
   color: #333;
+  cursor: pointer;
 }
 
 .search-form {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  margin: 0 1rem;
 }
 
 .search-input {
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   width: 300px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px;
+  background-color: #fafafa;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #50bfa4;
 }
 
 .nav-links {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .nav-links a {
-  text-decoration: none;
   color: #333;
+  text-decoration: none;
   font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
 }

@@ -2,8 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Create from './pages/Create'
 import Post from './pages/Post'
-// import Edit from './pages/Edit'  <-- (commented out for now)
-
 import Header from './components/Header'
 
 function App() {
@@ -14,7 +12,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/post/:id" element={<Post />} />
-        {/* <Route path="/edit/:id" element={<Edit />} /> */}
       </Routes>
     </BrowserRouter>
   )
