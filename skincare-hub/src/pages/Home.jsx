@@ -3,10 +3,9 @@ import { supabase } from '../api/supabaseClient'
 import PostList from '../components/PostList'
 import '../styles/Home.css'
 
-function Home() {
+function Home({ searchText }) {
   const [posts, setPosts] = useState([])
   const [sortBy, setSortBy] = useState('created_at')
-  const [searchText, setSearchText] = useState('')
 
   useEffect(() => {
     fetchPosts()
@@ -30,25 +29,17 @@ function Home() {
   )
 
   return (
-    <div className="home-page">
-      <div className="home-container">
-        <div className="sort-bar">
-          <button
-            onClick={() => setSortBy('created_at')}
-            className={sortBy === 'created_at' ? 'sort-button active' : 'sort-button'}
-          >
-            Newest
-          </button>
-          <button
-            onClick={() => setSortBy('upvotes')}
-            className={sortBy === 'upvotes' ? 'sort-button active' : 'sort-button'}
-          >
-            Most Popular
-          </button>
-        </div>
-
-        <PostList posts={filteredPosts} />
+    <div className="home-container">
+      <div className="sort-bar">
+        <button onClick={() => setSortBy('created_at')} className={sortBy === 'created_at' ? 'sort-button active' : 'sort-button'}>
+          Newest
+        </button>
+        <button onClick={() => setSortBy('upvotes')} className={sortBy === 'upvotes' ? 'sort-button active' : 'sort-button'}>
+          Most Popular
+        </button>
       </div>
+
+      <PostList posts={filteredPosts} />
     </div>
   )
 }
